@@ -10,6 +10,7 @@
   "license": "UNLICENSED",
   "dependencies": {
     "initai-dev-server": "^0.4.8",
-    "initai-node": "~0.0.7"
+    "initai-node": "~0.0.7",
+    "request": "^2.79.0"
   }
 }
