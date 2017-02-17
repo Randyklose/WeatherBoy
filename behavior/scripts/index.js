@@ -41,10 +41,11 @@ exports.handle = (client) => {
     getWeather: [collectCity, provideWeather],
   }
 })
-  const collectCity = client.createStep({
+const collectCity = client.createStep({
   satisfied() {
     return Boolean(client.getConversationState().weatherCity)
   },
+
   extractInfo() {
     const city = client.getFirstEntityWithRole(client.getMessagePart(), 'city')
 
@@ -59,11 +60,6 @@ exports.handle = (client) => {
 
   prompt() {
     client.addResponse('prompt/weather_city')
-    client.done()
-  },
-  prompt() {
-    // Need to prompt user for city
-    console.log('Need to ask user for city')
     client.done()
   },
 })
