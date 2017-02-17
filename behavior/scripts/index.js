@@ -34,14 +34,6 @@ exports.handle = (client) => {
     }
   })
 
-  client.runFlow({
-  classifications: {},
-  streams: {
-    main: 'getWeather',
-    hi: [sayHello],
-    getWeather: [collectCity, provideWeather],
-  }
-})
 const collectCity = client.createStep({
   satisfied() {
     return Boolean(client.getConversationState().weatherCity)
@@ -96,6 +88,14 @@ const collectCity = client.createStep({
 
         callback()
       })
-    }
+    },
   })
+  client.runFlow({
+  classifications: {},
+  streams: {
+    main: 'getWeather',
+    hi: [sayHello],
+    getWeather: [collectCity, provideWeather],
+  }
+})
 }
